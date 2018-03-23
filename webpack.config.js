@@ -24,6 +24,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
+            plugins: [
+              '@babel/plugin-transform-runtime',
+              require('@babel/plugin-proposal-object-rest-spread'),
+            ],
           },
         },
       },
