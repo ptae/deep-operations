@@ -4,5 +4,8 @@
   "description": "A lib to work with deep objects operations",
   "main": "index.js",
   "author": "gabrielSeixas",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^22.4.3"
+  }
 }
