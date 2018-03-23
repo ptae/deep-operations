@@ -6,6 +6,48 @@ const unique = arrArg => {
   });
 };
 
+const flatValues = obj => {
+  const alreadyArray = Array.isArray(obj);
+
+  const values = alreadyArray ? obj : Object.values(obj);
+
+  return values.reduce((accumulator, currVal) => {
+    const isObject = typeof currVal === 'object' && !Array.isArray(currVal);
+
+    const turnToArray = isObject ? flatValues(currVal) : [currVal];
+    return [...accumulator, ...turnToArray];
+  }, []);
+};
+
+const objectDiff = (objOne, objTwo) => {
+  const keysOne = Object.keys(objOne);
+  const keysTwo = Object.keys(objTwo);
+  const CHANGED = 'changed';
+  const NOT_CHANGED = 'not changed';
+  const NEW_KEY = 'new key';
+
+  const diffObject = keysTwo.reduce((accumulator, currVal) => {
+    const hasKey = keysOne.includes(currVal);
+    const isChanged = hasKey && JSON.stringify(objOne[currVal]) !== JSON.stringify(objTwo[currVal]);
+    const diffValue = isChanged ? CHANGED : NOT_CHANGED;
+    const defineIfIsNew = hasKey ? diffValue : NEW_KEY;
+    const isObject =
+      objOne[currVal] &&
+      typeof objOne[currVal] === 'object' &&
+      (objTwo[currVal] && typeof objTwo[currVal] === 'object');
+
+    return {
+      ...accumulator,
+      [currVal]: isObject ? objectDiff(objOne[currVal], objTwo[currVal])[0] : defineIfIsNew,
+    };
+  }, {});
+
+  const diffFlat = flatValues(diffObject);
+  const hasDiff = diffFlat.includes(CHANGED) || diffFlat.includes(NEW_KEY);
+
+  return [diffObject, hasDiff];
+};
+
 const deepMergeTwoObjects = (objOne, objTwo) => {
   const objOneKeys = Object.keys(objOne);
   const objTwoKeys = Object.keys(objTwo);
@@ -40,4 +82,5 @@ const deepMerge = (...objs) => {
 module.exports = {
   deepMergeTwoObjects,
   deepMerge,
+  objectDiff,
 };
