@@ -16,18 +16,17 @@ const bothIsArray = (objOne, objTwo, key) =>
 
 const flatValues = obj => {
   const alreadyArray = Array.isArray(obj);
-
   const values = alreadyArray ? obj : Object.values(obj);
 
   return values.reduce((accumulator, currVal) => {
     const isObject = typeof currVal === 'object' && !Array.isArray(currVal);
-
     const turnToArray = isObject ? flatValues(currVal) : [currVal];
+
     return [...accumulator, ...turnToArray];
   }, []);
 };
 
-const objectDiff = (objOne, objTwo) => {
+export const objectDiff = (objOne, objTwo, { shallow = false }) => {
   const keysOne = Object.keys(objOne);
   const keysTwo = Object.keys(objTwo);
   const CHANGED = 'changed';
@@ -41,9 +40,14 @@ const objectDiff = (objOne, objTwo) => {
     const defineIfIsNew = hasKey ? diffValue : NEW_KEY;
     const isObject = bothIsObject(objOne, objTwo, currVal);
 
+    const recursiveStrategy = () =>
+      isObject ? objectDiff(objOne[currVal], objTwo[currVal], { shallow })[0] : defineIfIsNew;
+
+    const diffStrategy = () => (shallow ? defineIfIsNew : recursiveStrategy());
+
     return {
       ...accumulator,
-      [currVal]: isObject ? objectDiff(objOne[currVal], objTwo[currVal])[0] : defineIfIsNew,
+      [currVal]: diffStrategy(),
     };
   }, {});
 
@@ -53,7 +57,7 @@ const objectDiff = (objOne, objTwo) => {
   return [diffObject, hasDiff];
 };
 
-const deepMergeTwoObjects = (objOne, objTwo) => {
+export const deepMergeTwoObjects = (objOne, objTwo) => {
   const objOneKeys = Object.keys(objOne);
   const objTwoKeys = Object.keys(objTwo);
 
@@ -78,14 +82,8 @@ const deepMergeTwoObjects = (objOne, objTwo) => {
 /**
  * Deep merges a list of objects
  */
-const deepMerge = (...objs) => {
+export const deepMerge = (...objs) => {
   const firstObject = objs[0];
 
   return objs.reduce((accumulator, currentVal) => {}, { ...firstObject });
-};
-
-module.exports = {
-  deepMergeTwoObjects,
-  deepMerge,
-  objectDiff,
 };
