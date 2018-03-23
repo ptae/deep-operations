@@ -1,0 +1,8 @@
+{
+  "name": "deep-operations",
+  "version": "1.0.0",
+  "description": "A lib to work with deep objects operations",
+  "main": "index.js",
+  "author": "gabrielSeixas",
+  "license": "MIT"
+}
