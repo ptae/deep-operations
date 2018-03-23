@@ -34,3 +34,9 @@ const merged = deepOperations.deepMergeTwoObjects(objectExampleOne, objectExampl
 console.log('=============================');
 console.log(merged);
 console.log('=============================');
+
+const diff = deepOperations.objectDiff(objectExampleOne, objectExampleTwo);
+
+console.log('=============================');
+console.log(diff);
+console.log('=============================');

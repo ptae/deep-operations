@@ -6,6 +6,14 @@ const unique = arrArg => {
   });
 };
 
+const bothIsObject = (objOne, objTwo, key) =>
+  objOne[key] &&
+  typeof objOne[key] === 'object' &&
+  (objTwo[key] && typeof objTwo[key] === 'object');
+
+const bothIsArray = (objOne, objTwo, key) =>
+  objOne[key] && Array.isArray(objOne[key]) && (objTwo[key] && Array.isArray(objTwo[key]));
+
 const flatValues = obj => {
   const alreadyArray = Array.isArray(obj);
 
@@ -31,10 +39,7 @@ const objectDiff = (objOne, objTwo) => {
     const isChanged = hasKey && JSON.stringify(objOne[currVal]) !== JSON.stringify(objTwo[currVal]);
     const diffValue = isChanged ? CHANGED : NOT_CHANGED;
     const defineIfIsNew = hasKey ? diffValue : NEW_KEY;
-    const isObject =
-      objOne[currVal] &&
-      typeof objOne[currVal] === 'object' &&
-      (objTwo[currVal] && typeof objTwo[currVal] === 'object');
+    const isObject = bothIsObject(objOne, objTwo, currVal);
 
     return {
       ...accumulator,
@@ -55,8 +60,8 @@ const deepMergeTwoObjects = (objOne, objTwo) => {
   return objTwoKeys.reduce((accumulator, currKey) => {
     const oneHasKey = objOneKeys.includes(currKey);
 
-    const isArray = oneHasKey && Array.isArray(objTwo[currKey]);
-    const isObject = oneHasKey && objTwo[currKey] && typeof objTwo[currKey] === 'object';
+    const isArray = bothIsArray(objOne, objTwo, currKey);
+    const isObject = bothIsObject(objOne, objTwo, currKey);
 
     const mergeArrays = () => unique(objOne[currKey].concat(objTwo[currKey]));
     const mergeObject = () => isObject && deepMergeTwoObjects(objOne[currKey], objTwo[currKey]);
