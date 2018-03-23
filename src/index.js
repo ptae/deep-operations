@@ -11,10 +11,10 @@ const deepMergeTwoObjects = (objOne, objTwo) => {
   const objTwoKeys = Object.keys(objTwo);
 
   return objTwoKeys.reduce((accumulator, currKey) => {
-    const atLeastOneHasKey = objOneKeys.includes(currKey) || objTwoKeys.includes(currKey);
+    const oneHasKey = objOneKeys.includes(currKey);
 
-    const isArray = atLeastOneHasKey && Array.isArray(objTwo[currKey]);
-    const isObject = atLeastOneHasKey && objTwo[currKey] && typeof objTwo[currKey] === 'object';
+    const isArray = oneHasKey && Array.isArray(objTwo[currKey]);
+    const isObject = oneHasKey && objTwo[currKey] && typeof objTwo[currKey] === 'object';
 
     const mergeArrays = () => unique(objOne[currKey].concat(objTwo[currKey]));
     const mergeObject = () => isObject && deepMergeTwoObjects(objOne[currKey], objTwo[currKey]);
@@ -22,7 +22,7 @@ const deepMergeTwoObjects = (objOne, objTwo) => {
     const mergedObject = isArray ? mergeArrays() : mergeObject();
 
     const result = isPrimitive(objTwo[currKey]) ? objTwo[currKey] : mergedObject;
-    const putIfNew = !atLeastOneHasKey ? objTwo[currKey] : result;
+    const putIfNew = !oneHasKey ? objTwo[currKey] : result;
 
     return { ...accumulator, [currKey]: putIfNew };
   }, {});
