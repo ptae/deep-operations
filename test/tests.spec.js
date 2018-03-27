@@ -1,4 +1,4 @@
-const deepOperations = require('../src');
+import * as deepOperations from '../src';
 
 const objectExampleOne = {
   name: 'Gabriel',
@@ -35,7 +35,7 @@ console.log('=============================');
 console.log(merged);
 console.log('=============================');
 
-const diff = deepOperations.objectDiff(objectExampleOne, objectExampleTwo);
+const diff = deepOperations.objectDiff(objectExampleOne, objectExampleTwo, { shallow: false });
 
 console.log('=============================');
 console.log(diff);

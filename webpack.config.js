@@ -12,7 +12,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.bundle.js',
+    filename: '[name].bundle.js',
   },
 
   module: {
@@ -24,15 +24,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: [
-              '@babel/plugin-transform-runtime',
-              require('@babel/plugin-proposal-object-rest-spread'),
-            ],
+            plugins: [require('@babel/plugin-proposal-object-rest-spread')],
           },
         },
       },
     ],
   },
-
-  plugins: [new UglifyJsPlugin()],
 };
