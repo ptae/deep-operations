@@ -6,12 +6,12 @@ const unique = arrArg => {
   });
 };
 
-const bothIsObject = (objOne, objTwo, key) =>
+const isBothObject = (objOne, objTwo, key) =>
   objOne[key] &&
   typeof objOne[key] === 'object' &&
   (objTwo[key] && typeof objTwo[key] === 'object');
 
-const bothIsArray = (objOne, objTwo, key) =>
+const isBothArray = (objOne, objTwo, key) =>
   objOne[key] && Array.isArray(objOne[key]) && (objTwo[key] && Array.isArray(objTwo[key]));
 
 const deepMergeTwoObjects = (objOne, objTwo) => {
@@ -21,8 +21,8 @@ const deepMergeTwoObjects = (objOne, objTwo) => {
   return objTwoKeys.reduce((accumulator, currKey) => {
     const oneHasKey = objOneKeys.includes(currKey);
 
-    const isArray = bothIsArray(objOne, objTwo, currKey);
-    const isObject = bothIsObject(objOne, objTwo, currKey);
+    const isArray = isBothArray(objOne, objTwo, currKey);
+    const isObject = isBothObject(objOne, objTwo, currKey);
 
     const mergeArrays = () => unique(objOne[currKey].concat(objTwo[currKey]));
     const mergeObject = () => isObject && deepMergeTwoObjects(objOne[currKey], objTwo[currKey]);
@@ -74,7 +74,7 @@ export const objectDiff = (objOne, objTwo, { shallow = false }) => {
 
     const diffValue = isChanged ? CHANGED : NOT_CHANGED;
     const defineIfIsNew = hasKey ? diffValue : NEW_KEY;
-    const isObject = bothIsObject(objOne, objTwo, currVal);
+    const isObject = isBothObject(objOne, objTwo, currVal);
 
     const recursiveStrategy = () =>
       isObject ? objectDiff(objOne[currVal], objTwo[currVal], { shallow })[0] : defineIfIsNew;
