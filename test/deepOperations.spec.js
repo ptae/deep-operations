@@ -48,3 +48,13 @@ test('objectDiff', () => {
     true,
   ]);
 });
+
+// Object merge future test
+// { name: 'Raquel',
+//   lastname: 'Seixas',
+//   address:
+//    { streetName: 'Creep street',
+//      number: '355',
+//      example: { name: 'name2', example: 'exampleKey' } },
+//   telephones: [ '2256-4329', '99283-7844', '99283-7777' ],
+//   dogs: [ 'jujuba', 'nina', 'hana', 'bidu' ] }

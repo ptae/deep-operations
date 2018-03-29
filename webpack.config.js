@@ -7,7 +7,6 @@ module.exports = {
 
   entry: {
     build: './src/index.js',
-    test: './test/tests.spec.js',
   },
 
   output: {
@@ -29,5 +28,5 @@ module.exports = {
         },
       },
     ],
-  },  
+  },
 };
