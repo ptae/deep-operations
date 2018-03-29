@@ -29,7 +29,7 @@ const objectExampleTwo = {
   dogs: ['hana', 'bidu', 'nina'],
 };
 
-const merged = deepOperations.deepMergeTwoObjects(objectExampleOne, objectExampleTwo);
+const merged = deepOperations.deepMerge(objectExampleOne, objectExampleTwo);
 
 console.log('=============================');
 console.log(merged);
