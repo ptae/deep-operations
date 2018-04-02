@@ -1,4 +1,4 @@
-const deepOperations = require('../src/');
+import deepOperations from '../src/deep-operations';
 
 const objectExampleOne = {
   name: 'Gabriel',

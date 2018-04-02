@@ -1,4 +1,4 @@
-const deepOperations = require('./dist/index.bundle');
+const deepOperations = require('./dist/lib/deep-operations');
 
 const objectExampleOne = {
   name: 'Gabriel',

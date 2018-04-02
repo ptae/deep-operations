@@ -1,6 +1,6 @@
 import { isBothArray, isBothObject, isPrimitive, unique } from './utils';
 
-const deepMergeTwoObjects = (objOne, objTwo) => {
+const deepMergeTwoObjects = (objOne: any, objTwo: any): object => {
   const objOneKeys = Object.keys(objOne);
   const objTwoKeys = Object.keys(objTwo);
 
@@ -22,18 +22,18 @@ const deepMergeTwoObjects = (objOne, objTwo) => {
   }, {});
 };
 
-export const sortObjKeys = obj => {
+export const sortObjKeys = (obj: any) => {
   const orederedKeys = Object.keys(obj).sort();
   return orederedKeys.reduce((accumulator, currVal) => {
     return { ...accumulator, [currVal]: obj[currVal] };
   }, {});
 };
 
-export const flatValues = obj => {
+export const flatValues = (obj: any) => {
   const alreadyArray = Array.isArray(obj);
   const values = alreadyArray ? obj : Object.values(obj);
 
-  return values.reduce((accumulator, currVal) => {
+  return values.reduce((accumulator: any, currVal: any) => {
     const isObject = typeof currVal === 'object' && !Array.isArray(currVal);
     const turnToArray = isObject ? flatValues(currVal) : [currVal];
 
@@ -44,7 +44,7 @@ export const flatValues = obj => {
 /**
  * Will mount a diff between two objects
  */
-export const objectDiff = (objOne, objTwo, { shallow = false }) => {
+export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): any => {
   const keysOne = Object.keys(objOne);
   const keysTwo = Object.keys(objTwo);
   const CHANGED = 'changed';
@@ -83,11 +83,11 @@ export const objectDiff = (objOne, objTwo, { shallow = false }) => {
  * Deep merges a list of objects
  * @param { vararg } objs list of objects to merge
  */
-export const deepMerge = (...objs) => {
+export const deepMerge = (...objs: any[]) => {
   const firstObject = { ...objs[0] };
 
   return objs.reduce(
-    (accumulator, currVal) => deepMergeTwoObjects(accumulator, currVal),
+    (accumulator: any, currVal: any) => deepMergeTwoObjects(accumulator, currVal),
     firstObject,
   );
 };
