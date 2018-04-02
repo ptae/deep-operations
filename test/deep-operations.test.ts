@@ -1,4 +1,4 @@
-import deepOperations from '../src/deep-operations';
+import deepOperations from '../src/deep-operations'
 
 const objectExampleOne = {
   name: 'Gabriel',
@@ -7,12 +7,12 @@ const objectExampleOne = {
     streetName: 'Master street',
     number: '355',
     example: {
-      name: 'name1',
-    },
+      name: 'name1'
+    }
   },
   telephones: ['2256-4329', '99283-7844'],
-  dogs: ['jujuba', 'nina'],
-};
+  dogs: ['jujuba', 'nina']
+}
 
 const objectExampleTwo = {
   name: 'Raquel',
@@ -22,12 +22,12 @@ const objectExampleTwo = {
     number: '355',
     example: {
       name: 'name2',
-      example: 'exampleKey',
-    },
+      example: 'exampleKey'
+    }
   },
   telephones: ['2256-4329', '99283-7777'],
-  dogs: ['hana', 'bidu', 'nina'],
-};
+  dogs: ['hana', 'bidu', 'nina']
+}
 
 describe('Test objectDiff', () => {
   it('deep checks differences', () => {
@@ -40,19 +40,17 @@ describe('Test objectDiff', () => {
           number: 'not changed',
           example: {
             name: 'changed',
-            example: 'new key',
-          },
+            example: 'new key'
+          }
         },
         telephones: { '0': 'not changed', '1': 'changed' },
-        dogs: { '0': 'changed', '1': 'changed', '2': 'new key' },
+        dogs: { '0': 'changed', '1': 'changed', '2': 'new key' }
       },
-      true,
-    ];
+      true
+    ]
 
-    expect(deepOperations.objectDiff(objectExampleOne, objectExampleTwo, {})).toEqual(
-      expectedValue,
-    );
-  });
+    expect(deepOperations.objectDiff(objectExampleOne, objectExampleTwo)).toEqual(expectedValue)
+  })
 
   it('shallow checks differences', () => {
     const expectedValue = [
@@ -61,16 +59,35 @@ describe('Test objectDiff', () => {
         lastname: 'not changed',
         address: 'changed',
         telephones: 'changed',
-        dogs: 'changed',
+        dogs: 'changed'
       },
-      true,
-    ];
+      true
+    ]
 
     expect(
-      deepOperations.objectDiff(objectExampleOne, objectExampleTwo, { shallow: true }),
-    ).toEqual(expectedValue);
-  });
-});
+      deepOperations.objectDiff(objectExampleOne, objectExampleTwo, { shallow: true })
+    ).toEqual(expectedValue)
+  })
+
+  it('diff with undefined values', () => {
+    const withUndefined = { ...objectExampleTwo, randomKey: undefined }
+    const expectedValue = [
+      {
+        name: 'changed',
+        lastname: 'not changed',
+        address: 'changed',
+        telephones: 'changed',
+        dogs: 'changed',
+        randomKey: 'new key'
+      },
+      true
+    ]
+
+    expect(deepOperations.objectDiff(objectExampleOne, withUndefined, { shallow: true })).toEqual(
+      expectedValue
+    )
+  })
+})
 
 describe('Test deepMerge', () => {
   it('deep merges objects', () => {
@@ -80,12 +97,30 @@ describe('Test deepMerge', () => {
       address: {
         streetName: 'Creep street',
         number: '355',
-        example: { name: 'name2', example: 'exampleKey' },
+        example: { name: 'name2', example: 'exampleKey' }
+      },
+      telephones: ['2256-4329', '99283-7844', '99283-7777'],
+      dogs: ['jujuba', 'nina', 'hana', 'bidu']
+    }
+
+    expect(deepOperations.deepMerge(objectExampleOne, objectExampleTwo)).toEqual(expectedValue)
+  })
+
+  it('deep merges objects with undefined values', () => {
+    const withUndefined: object = { ...objectExampleTwo, randomKey: undefined }
+    const expectedValue = {
+      name: 'Raquel',
+      lastname: 'Seixas',
+      address: {
+        streetName: 'Creep street',
+        number: '355',
+        example: { name: 'name2', example: 'exampleKey' }
       },
       telephones: ['2256-4329', '99283-7844', '99283-7777'],
       dogs: ['jujuba', 'nina', 'hana', 'bidu'],
-    };
+      randomKey: undefined
+    }
 
-    expect(deepOperations.deepMerge(objectExampleOne, objectExampleTwo)).toEqual(expectedValue);
-  });
-});
+    expect(deepOperations.deepMerge(objectExampleOne, withUndefined)).toEqual(expectedValue)
+  })
+})
