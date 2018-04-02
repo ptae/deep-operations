@@ -106,6 +106,28 @@
     /**
      * Deep merges a list of objects
      * @param { vararg } objs list of objects to merge
+     * @returns a single object with merged values
+     *
+     * @example
+     *
+     * const obj1 = {
+     *  name: 'example1'
+     *  random: 'random1'
+     * };
+     *
+     * const obj2 = {
+     *  name: 'example2'
+     *  random: 'random1'
+     * };
+     *
+     * const obj3 = {
+     *  name: 'example2'
+     *  random: 'random1',
+     *  newKey: 'newKey',
+     * };
+     *
+     * const mergedObject = deepMerge(obj1, obj2, obj3);
+     * // => { name: 'example2', random: 'random1', newKey: 'newKey' }
      */
     var deepMerge = function () {
         var objs = [];
@@ -119,7 +141,7 @@
         objectDiff: objectDiff,
         deepMerge: deepMerge,
         flatValues: flatValues,
-        sortObjKeys: sortObjKeys,
+        sortObjKeys: sortObjKeys
     };
 
     exports.sortObjKeys = sortObjKeys;
