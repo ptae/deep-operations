@@ -1,14 +1,12 @@
 {
   "name": "deep-operations",
-  "version": "0.0.16",
+  "version": "0.0.18",
   "description": "A lib to work with deep object operations",
   "keywords": [],
   "main": "dist/deep-operations.umd.js",
   "module": "dist/deep-operations.es5.js",
   "typings": "dist/types/deep-operations.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "repository": "git@github.com:gabrielSeixas/deep-operations.git",
   "author": "gabrielSeixas <salesseixasgabriel@gmail.com>",
   "license": "MIT",
@@ -18,7 +16,8 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build":
+      "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -31,10 +30,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "prettier --write --no-semi --single-quote",
-      "git add"
-    ]
+    "{src,test}/**/*.ts": ["prettier --write --no-semi --single-quote", "git add"]
   },
   "config": {
     "commitizen": {
@@ -42,7 +38,8 @@
     },
     "validate-commit-msg": {
       "types": "conventional-commit-types",
-      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+      "helpMessage":
+        "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
     }
   },
   "jest": {
@@ -50,15 +47,8 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "/test/"],
     "coverageThreshold": {
       "global": {
         "branches": 90,
