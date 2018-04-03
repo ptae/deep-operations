@@ -5,6 +5,6 @@ export type Options = {
   mergeObjectIntoArrays: boolean;
 };
 
-export type KeyedObject = {
+export type KeyedObject = object & {
   [key: string]: any;
 };
