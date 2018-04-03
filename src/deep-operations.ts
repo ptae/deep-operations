@@ -3,7 +3,7 @@ import { deepMergeTwoObjects } from './internals/merge';
 import { Options, KeyedObject } from './types';
 
 export const sortObjKeys = (obj: KeyedObject): object => {
-  if (typeof obj !== 'undefined') {
+  if (typeof obj !== 'undefined' && obj) {
     const orederedKeys = Object.keys(obj).sort();
     return orederedKeys.reduce((accumulator: object, currVal: string) => {
       return { ...accumulator, [currVal]: obj[currVal] };

@@ -12,6 +12,8 @@ const objectExampleOne = {
   },
   randomKey1: undefined,
   randomKey2: 'randomExample',
+  randomKey3: 'with a random example',
+  randomKey4: null,
   telephones: ['2256-4329', '99283-7844'],
   dogs: ['jujuba', 'nina'],
   images: [{ id: 1, permalink: 'www.example.com/' }, { id: 2, permalink: 'www.example2.com/' }]
@@ -32,6 +34,8 @@ const objectExampleTwo = {
   dogs: ['hana', 'bidu', 'nina'],
   randomKey1: 'randomExample',
   randomKey2: undefined,
+  randomKey3: null,
+  randomKey4: 'random test',
   images: [
     { id: 1, permalink: 'www.example-other.com/' },
     { id: 2, permalink: 'www.example2.com/' }
@@ -54,6 +58,8 @@ describe('Test objectDiff', () => {
         },
         randomKey1: 'changed',
         randomKey2: 'changed',
+        randomKey3: 'changed',
+        randomKey4: 'changed',
         telephones: { '0': 'not changed', '1': 'changed' },
         dogs: { '0': 'changed', '1': 'changed', '2': 'new key' },
         images: {
@@ -76,6 +82,8 @@ describe('Test objectDiff', () => {
         images: 'changed',
         randomKey1: 'changed',
         randomKey2: 'changed',
+        randomKey3: 'changed',
+        randomKey4: 'changed',
         telephones: 'changed',
         dogs: 'changed'
       },
@@ -100,6 +108,8 @@ describe('Test deepMerge', () => {
       },
       randomKey1: 'randomExample',
       randomKey2: undefined,
+      randomKey3: null,
+      randomKey4: 'random test',
       images: [
         {
           id: 1,
@@ -142,6 +152,8 @@ describe('Test deepMerge', () => {
       },
       randomKey1: 'randomExample',
       randomKey2: undefined,
+      randomKey3: null,
+      randomKey4: 'random test',
       telephones: ['2256-4329', '99283-7844', '99283-7777'],
       dogs: ['jujuba', 'nina', 'hana', 'bidu'],
       images: [
