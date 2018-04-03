@@ -1,12 +1,15 @@
 import { isBothArray, isBothObject, isPrimitive, unique } from './utils';
 import { deepMergeTwoObjects } from './internals/merge';
-import { Options } from './types';
+import { Options, KeyedObject } from './types';
 
-export const sortObjKeys = (obj: any) => {
-  const orederedKeys = Object.keys(obj).sort();
-  return orederedKeys.reduce((accumulator, currVal) => {
-    return { ...accumulator, [currVal]: obj[currVal] };
-  }, {});
+export const sortObjKeys = (obj: KeyedObject): object => {
+  if (typeof obj !== 'undefined') {
+    const orederedKeys = Object.keys(obj).sort();
+    return orederedKeys.reduce((accumulator: object, currVal: string) => {
+      return { ...accumulator, [currVal]: obj[currVal] };
+    }, {});
+  }
+  return obj;
 };
 
 export const flatValues = (obj: any) => {
