@@ -1,6 +1,6 @@
 import { isBothArray, isBothObject, isPrimitive, unique } from './utils';
 import { deepMergeTwoObjects } from './internals/merge';
-import { Options, KeyedObject } from './types';
+import { Options, KeyedObject, ObjectState } from './types';
 
 export const sortObjKeys = (obj: KeyedObject): object => {
   if (typeof obj !== 'undefined' && obj) {
@@ -30,9 +30,6 @@ export const flatValues = (obj: any) => {
 export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): any => {
   const keysOne = Object.keys(objOne);
   const keysTwo = Object.keys(objTwo);
-  const CHANGED = 'changed';
-  const NOT_CHANGED = 'not changed';
-  const NEW_KEY = 'new key';
 
   const diffObject = keysTwo.reduce((accumulator, currVal) => {
     const hasKey = keysOne.includes(currVal);
@@ -41,8 +38,8 @@ export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): 
       hasKey &&
       JSON.stringify(sortObjKeys(objOne[currVal])) !== JSON.stringify(sortObjKeys(objTwo[currVal]));
 
-    const diffValue = isChanged ? CHANGED : NOT_CHANGED;
-    const defineIfIsNew = hasKey ? diffValue : NEW_KEY;
+    const diffValue = isChanged ? ObjectState.CHANGED : ObjectState.NOT_CHANGED;
+    const defineIfIsNew = hasKey ? diffValue : ObjectState.NEW_KEY;
     const isObject = isBothObject(objOne, objTwo, currVal);
 
     const recursiveStrategy = () =>
@@ -57,7 +54,7 @@ export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): 
   }, {});
 
   const diffFlat = flatValues(diffObject);
-  const hasDiff = diffFlat.includes(CHANGED) || diffFlat.includes(NEW_KEY);
+  const hasDiff = diffFlat.includes(ObjectState.CHANGED) || diffFlat.includes(ObjectState.NEW_KEY);
 
   return [diffObject, hasDiff];
 };
