@@ -24,6 +24,13 @@ export const flatValues = (obj: any) => {
   }, []);
 };
 
+const hasDiff = (diffObject: object): boolean => {
+  return (
+    flatValues(diffObject).includes(ObjectState.CHANGED) ||
+    flatValues(diffObject).includes(ObjectState.NEW_KEY)
+  );
+};
+
 /**
  * Will mount a diff between two objects
  */
@@ -53,10 +60,7 @@ export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): 
     };
   }, {});
 
-  const diffFlat = flatValues(diffObject);
-  const hasDiff = diffFlat.includes(ObjectState.CHANGED) || diffFlat.includes(ObjectState.NEW_KEY);
-
-  return [diffObject, hasDiff];
+  return [diffObject, hasDiff(diffObject)];
 };
 
 /**
