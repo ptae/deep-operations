@@ -11,11 +11,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var utils_1 = require("./utils");
 var merge_1 = require("./internals/merge");
 exports.sortObjKeys = function (obj) {
-    var orederedKeys = Object.keys(obj).sort();
-    return orederedKeys.reduce(function (accumulator, currVal) {
-        return __assign({}, accumulator, (_a = {}, _a[currVal] = obj[currVal], _a));
-        var _a;
-    }, {});
+    if (typeof obj !== 'undefined') {
+        var orederedKeys = Object.keys(obj).sort();
+        return orederedKeys.reduce(function (accumulator, currVal) {
+            return __assign({}, accumulator, (_a = {}, _a[currVal] = obj[currVal], _a));
+            var _a;
+        }, {});
+    }
+    return obj;
 };
 exports.flatValues = function (obj) {
     var alreadyArray = Array.isArray(obj);
@@ -71,6 +74,6 @@ exports.default = {
     objectDiff: exports.objectDiff,
     deepMerge: exports.deepMerge,
     flatValues: exports.flatValues,
-    sortObjKeys: exports.sortObjKeys,
+    sortObjKeys: exports.sortObjKeys
 };
 //# sourceMappingURL=deep-operations.js.map

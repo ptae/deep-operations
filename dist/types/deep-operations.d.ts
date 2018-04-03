@@ -1,5 +1,5 @@
-import { Options } from './types';
-export declare const sortObjKeys: (obj: any) => {};
+import { Options, KeyedObject } from './types';
+export declare const sortObjKeys: (obj: KeyedObject) => object;
 export declare const flatValues: (obj: any) => any;
 /**
  * Will mount a diff between two objects
@@ -20,6 +20,6 @@ declare const _default: {
     }) => any;
     deepMerge: (options: Options) => object;
     flatValues: (obj: any) => any;
-    sortObjKeys: (obj: any) => {};
+    sortObjKeys: (obj: KeyedObject) => object;
 };
 export default _default;

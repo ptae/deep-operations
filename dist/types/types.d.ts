@@ -4,3 +4,6 @@ export declare type Options = {
     indexKeyOnArrays: string | '';
     mergeObjectIntoArrays: boolean;
 };
+export declare type KeyedObject = {
+    [key: string]: any;
+};

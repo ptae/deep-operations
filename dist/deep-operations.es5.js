@@ -98,11 +98,14 @@ var mergeArrayObjects = function (arrayOne, arrayTwo, indexKey) {
 };
 
 var sortObjKeys = function (obj) {
-    var orederedKeys = Object.keys(obj).sort();
-    return orederedKeys.reduce(function (accumulator, currVal) {
-        return __assign({}, accumulator, (_a = {}, _a[currVal] = obj[currVal], _a));
-        var _a;
-    }, {});
+    if (typeof obj !== 'undefined') {
+        var orederedKeys = Object.keys(obj).sort();
+        return orederedKeys.reduce(function (accumulator, currVal) {
+            return __assign({}, accumulator, (_a = {}, _a[currVal] = obj[currVal], _a));
+            var _a;
+        }, {});
+    }
+    return obj;
 };
 var flatValues = function (obj) {
     var alreadyArray = Array.isArray(obj);
@@ -158,7 +161,7 @@ var deepOperations = {
     objectDiff: objectDiff,
     deepMerge: deepMerge,
     flatValues: flatValues,
-    sortObjKeys: sortObjKeys,
+    sortObjKeys: sortObjKeys
 };
 
 export default deepOperations;
