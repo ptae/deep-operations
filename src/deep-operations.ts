@@ -59,20 +59,13 @@ export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): 
   return [diffObject, hasDiff];
 };
 
-const defaultOptions: Options = {
-  objects: [],
-  onlyFields: [],
-  mergeObjectIntoArrays: false,
-  indexKeyOnArrays: ''
-};
-
 /**
  * Deep merges a list of objects
  * @param { Object } options options to costumize objects merge
  * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
  */
-export const deepMerge = (options = defaultOptions): object => {
+export const deepMerge = (options: Options): object => {
   if (typeof options.objects === 'undefined') {
     throw new Error('Objects cannot be undefined.');
   }

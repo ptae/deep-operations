@@ -147,12 +147,6 @@
         var hasDiff = diffFlat.includes(CHANGED) || diffFlat.includes(NEW_KEY);
         return [diffObject, hasDiff];
     };
-    var defaultOptions = {
-        objects: [],
-        onlyFields: [],
-        mergeObjectIntoArrays: false,
-        indexKeyOnArrays: '',
-    };
     /**
      * Deep merges a list of objects
      * @param { Object } options options to costumize objects merge
@@ -160,7 +154,6 @@
      * @returns a single object with merged values
      */
     var deepMerge = function (options) {
-        if (options === void 0) { options = defaultOptions; }
         if (typeof options.objects === 'undefined') {
             throw new Error('Objects cannot be undefined.');
         }
