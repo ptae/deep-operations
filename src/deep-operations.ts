@@ -69,12 +69,6 @@ const defaultOptions: Options = {
 /**
  * Deep merges a list of objects
  * @param { Object } options options to costumize objects merge
- * {
- *  objects: [],
- *  onlyFields: [],
- *  mergeObjectIntoArrays: false,
- *  indexKeyOnArrays: '',
- * }
  * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
  */
