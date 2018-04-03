@@ -58,7 +58,7 @@ var defaultOptions = {
     objects: [],
     onlyFields: [],
     mergeObjectIntoArrays: false,
-    indexKeyOnArrays: ''
+    indexKeyOnArrays: '',
 };
 /**
  * Deep merges a list of objects
@@ -78,6 +78,6 @@ exports.default = {
     objectDiff: exports.objectDiff,
     deepMerge: exports.deepMerge,
     flatValues: exports.flatValues,
-    sortObjKeys: exports.sortObjKeys
+    sortObjKeys: exports.sortObjKeys,
 };
 //# sourceMappingURL=deep-operations.js.map

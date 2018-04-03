@@ -13,12 +13,12 @@ export declare const objectDiff: (objOne: any, objTwo: any, { shallow }?: {
  * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
  */
-export declare const deepMerge: (options?: Options) => any;
+export declare const deepMerge: (options?: Options) => object;
 declare const _default: {
     objectDiff: (objOne: any, objTwo: any, { shallow }?: {
         shallow?: boolean;
     }) => any;
-    deepMerge: (options?: Options) => any;
+    deepMerge: (options?: Options) => object;
     flatValues: (obj: any) => any;
     sortObjKeys: (obj: any) => {};
 };

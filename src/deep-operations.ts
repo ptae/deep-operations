@@ -72,7 +72,7 @@ const defaultOptions: Options = {
  * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
  */
-export const deepMerge = (options = defaultOptions) => {
+export const deepMerge = (options = defaultOptions): object => {
   if (typeof options.objects === 'undefined') {
     throw new Error('Objects cannot be undefined.')
   }
