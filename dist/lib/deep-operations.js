@@ -9,22 +9,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var utils_1 = require("./utils");
-var deepMergeTwoObjects = function (objOne, objTwo) {
-    var objOneKeys = Object.keys(objOne);
-    var objTwoKeys = Object.keys(objTwo);
-    return objTwoKeys.reduce(function (accumulator, currKey) {
-        var oneHasKey = objOneKeys.includes(currKey);
-        var isArray = utils_1.isBothArray(objOne, objTwo, currKey);
-        var isObject = utils_1.isBothObject(objOne, objTwo, currKey);
-        var mergeArrays = function () { return utils_1.unique(objOne[currKey].concat(objTwo[currKey])); };
-        var mergeObject = function () { return isObject && deepMergeTwoObjects(objOne[currKey], objTwo[currKey]); };
-        var mergedObject = isArray ? mergeArrays() : mergeObject();
-        var result = utils_1.isPrimitive(objTwo[currKey]) ? objTwo[currKey] : mergedObject;
-        var putIfNew = !oneHasKey ? objTwo[currKey] : result;
-        return __assign({}, accumulator, (_a = {}, _a[currKey] = putIfNew, _a));
-        var _a;
-    }, {});
-};
+var merge_1 = require("./internals/merge");
 exports.sortObjKeys = function (obj) {
     var orederedKeys = Object.keys(obj).sort();
     return orederedKeys.reduce(function (accumulator, currVal) {
@@ -69,24 +54,36 @@ exports.objectDiff = function (objOne, objTwo, _a) {
     var hasDiff = diffFlat.includes(CHANGED) || diffFlat.includes(NEW_KEY);
     return [diffObject, hasDiff];
 };
+var defaultOptions = {
+    objects: [],
+    onlyFields: [],
+    mergeObjectIntoArrays: false,
+    indexKeyOnArrays: '',
+};
 /**
  * Deep merges a list of objects
- * @param { vararg } objs list of objects to merge
+ * @param { Object } options options to costumize objects merge
+ * {
+ *  objects: [],
+ *  onlyFields: [],
+ *  mergeObjectIntoArrays: false,
+ *  indexKeyOnArrays: '',
+ * }
+ * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
- *
  */
-exports.deepMerge = function () {
-    var objs = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        objs[_i] = arguments[_i];
+exports.deepMerge = function (options) {
+    if (options === void 0) { options = defaultOptions; }
+    if (typeof options.objects === 'undefined') {
+        throw new Error('Objects cannot be undefined.');
     }
-    var firstObject = __assign({}, objs[0]);
-    return objs.reduce(function (accumulator, currVal) { return deepMergeTwoObjects(accumulator, currVal); }, firstObject);
+    var firstObject = __assign({}, options.objects[0]);
+    return options.objects.reduce(function (accumulator, currVal) { return merge_1.deepMergeTwoObjects(accumulator, currVal, options); }, firstObject);
 };
 exports.default = {
     objectDiff: exports.objectDiff,
     deepMerge: exports.deepMerge,
     flatValues: exports.flatValues,
-    sortObjKeys: exports.sortObjKeys
+    sortObjKeys: exports.sortObjKeys,
 };
 //# sourceMappingURL=deep-operations.js.map

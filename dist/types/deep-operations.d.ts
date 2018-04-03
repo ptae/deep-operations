@@ -1,3 +1,4 @@
+import { Options } from './types';
 export declare const sortObjKeys: (obj: any) => {};
 export declare const flatValues: (obj: any) => any;
 /**
@@ -8,16 +9,22 @@ export declare const objectDiff: (objOne: any, objTwo: any, { shallow }?: {
 }) => any;
 /**
  * Deep merges a list of objects
- * @param { vararg } objs list of objects to merge
+ * @param { Object } options options to costumize objects merge
+ * {
+ *  objects: [],
+ *  onlyFields: [],
+ *  mergeObjectIntoArrays: false,
+ *  indexKeyOnArrays: '',
+ * }
+ * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
- *
  */
-export declare const deepMerge: (...objs: any[]) => any;
+export declare const deepMerge: (options?: Options) => any;
 declare const _default: {
     objectDiff: (objOne: any, objTwo: any, { shallow }?: {
         shallow?: boolean;
     }) => any;
-    deepMerge: (...objs: any[]) => any;
+    deepMerge: (options?: Options) => any;
     flatValues: (obj: any) => any;
     sortObjKeys: (obj: any) => {};
 };

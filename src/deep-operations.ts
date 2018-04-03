@@ -1,26 +1,6 @@
 import { isBothArray, isBothObject, isPrimitive, unique } from './utils'
-
-const deepMergeTwoObjects = (objOne: any, objTwo: any): object => {
-  const objOneKeys = Object.keys(objOne)
-  const objTwoKeys = Object.keys(objTwo)
-
-  return objTwoKeys.reduce((accumulator, currKey) => {
-    const oneHasKey = objOneKeys.includes(currKey)
-
-    const isArray = isBothArray(objOne, objTwo, currKey)
-    const isObject = isBothObject(objOne, objTwo, currKey)
-
-    const mergeArrays = () => unique(objOne[currKey].concat(objTwo[currKey]))
-    const mergeObject = () => isObject && deepMergeTwoObjects(objOne[currKey], objTwo[currKey])
-
-    const mergedObject = isArray ? mergeArrays() : mergeObject()
-
-    const result = isPrimitive(objTwo[currKey]) ? objTwo[currKey] : mergedObject
-    const putIfNew = !oneHasKey ? objTwo[currKey] : result
-
-    return { ...accumulator, [currKey]: putIfNew }
-  }, {})
-}
+import { deepMergeTwoObjects } from './internals/merge'
+import { Options } from './types'
 
 export const sortObjKeys = (obj: any) => {
   const orederedKeys = Object.keys(obj).sort()
@@ -79,17 +59,34 @@ export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): 
   return [diffObject, hasDiff]
 }
 
+const defaultOptions: Options = {
+  objects: [],
+  onlyFields: [],
+  mergeObjectIntoArrays: false,
+  indexKeyOnArrays: ''
+}
+
 /**
  * Deep merges a list of objects
- * @param { vararg } objs list of objects to merge
+ * @param { Object } options options to costumize objects merge
+ * {
+ *  objects: [],
+ *  onlyFields: [],
+ *  mergeObjectIntoArrays: false,
+ *  indexKeyOnArrays: '',
+ * }
+ * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
- *
  */
-export const deepMerge = (...objs: any[]) => {
-  const firstObject = { ...objs[0] }
+export const deepMerge = (options = defaultOptions) => {
+  if (typeof options.objects === 'undefined') {
+    throw new Error('Objects cannot be undefined.')
+  }
 
-  return objs.reduce(
-    (accumulator: any, currVal: any) => deepMergeTwoObjects(accumulator, currVal),
+  const firstObject = { ...options.objects[0] }
+
+  return options.objects.reduce(
+    (accumulator: any, currVal: any) => deepMergeTwoObjects(accumulator, currVal, options),
     firstObject
   )
 }
