@@ -58,17 +58,11 @@ var defaultOptions = {
     objects: [],
     onlyFields: [],
     mergeObjectIntoArrays: false,
-    indexKeyOnArrays: '',
+    indexKeyOnArrays: ''
 };
 /**
  * Deep merges a list of objects
  * @param { Object } options options to costumize objects merge
- * {
- *  objects: [],
- *  onlyFields: [],
- *  mergeObjectIntoArrays: false,
- *  indexKeyOnArrays: '',
- * }
  * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
  */
@@ -84,6 +78,6 @@ exports.default = {
     objectDiff: exports.objectDiff,
     deepMerge: exports.deepMerge,
     flatValues: exports.flatValues,
-    sortObjKeys: exports.sortObjKeys,
+    sortObjKeys: exports.sortObjKeys
 };
 //# sourceMappingURL=deep-operations.js.map

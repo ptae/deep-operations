@@ -34,9 +34,7 @@ var unique = function (arrArg) {
     });
 };
 var isBothObject = function (objOne, objTwo, key) {
-    return objOne[key] &&
-        typeof objOne[key] === 'object' &&
-        (objTwo[key] && typeof objTwo[key] === 'object');
+    return objOne[key] && typeof objOne[key] === 'object' && (objTwo[key] && typeof objTwo[key] === 'object');
 };
 var isBothArray = function (objOne, objTwo, key) {
     return objOne[key] && Array.isArray(objOne[key]) && (objTwo[key] && Array.isArray(objTwo[key]));
@@ -61,7 +59,7 @@ var parseArraysToIndexObjects = function (arrayOne, arrayTwo, indexKey) {
 };
 var mergeObjectsOptions = {
     mergeObjectIntoArrays: false,
-    indexKeyOnArrays: '',
+    indexKeyOnArrays: ''
 };
 /**
  * It will merge only two objects
@@ -95,7 +93,7 @@ var mergeArrayObjects = function (arrayOne, arrayTwo, indexKey) {
     var _a = parseArraysToIndexObjects(arrayOne, arrayTwo, indexKey), indexedOne = _a[0], indexedTwo = _a[1];
     return deepMergeTwoObjects(indexedOne, indexedTwo, {
         indexKeyOnArrays: indexKey,
-        mergeObjectIntoArrays: true,
+        mergeObjectIntoArrays: true
     });
 };
 
@@ -152,12 +150,6 @@ var defaultOptions = {
 /**
  * Deep merges a list of objects
  * @param { Object } options options to costumize objects merge
- * {
- *  objects: [],
- *  onlyFields: [],
- *  mergeObjectIntoArrays: false,
- *  indexKeyOnArrays: '',
- * }
  * @param { Array } objs list of objects to merge
  * @returns a single object with merged values
  */

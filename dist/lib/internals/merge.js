@@ -14,7 +14,7 @@ var parseArraysToIndexObjects = function (arrayOne, arrayTwo, indexKey) {
 };
 var mergeObjectsOptions = {
     mergeObjectIntoArrays: false,
-    indexKeyOnArrays: '',
+    indexKeyOnArrays: ''
 };
 /**
  * It will merge only two objects
@@ -48,7 +48,7 @@ var mergeArrayObjects = function (arrayOne, arrayTwo, indexKey) {
     var _a = parseArraysToIndexObjects(arrayOne, arrayTwo, indexKey), indexedOne = _a[0], indexedTwo = _a[1];
     return exports.deepMergeTwoObjects(indexedOne, indexedTwo, {
         indexKeyOnArrays: indexKey,
-        mergeObjectIntoArrays: true,
+        mergeObjectIntoArrays: true
     });
 };
 //# sourceMappingURL=merge.js.map

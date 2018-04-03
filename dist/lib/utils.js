@@ -21,9 +21,7 @@ exports.unique = function (arrArg) {
     });
 };
 exports.isBothObject = function (objOne, objTwo, key) {
-    return objOne[key] &&
-        typeof objOne[key] === 'object' &&
-        (objTwo[key] && typeof objTwo[key] === 'object');
+    return objOne[key] && typeof objOne[key] === 'object' && (objTwo[key] && typeof objTwo[key] === 'object');
 };
 exports.isBothArray = function (objOne, objTwo, key) {
     return objOne[key] && Array.isArray(objOne[key]) && (objTwo[key] && Array.isArray(objTwo[key]));
