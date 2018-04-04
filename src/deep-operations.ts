@@ -12,6 +12,21 @@ const hasDiff = (diffObject: object): boolean => {
   return diffObjectHas(ObjectState.CHANGED) || diffObjectHas(ObjectState.NEW_KEY);
 };
 
+const deepAttributes = (obj: object, type: string): string[] => {
+  if (type !== 'keys' && type !== 'values') {
+    throw new Error('type param must be `keys` or `values`');
+  }
+
+  const values = type === 'keys' ? Object.keys(obj) : Object.values(obj);
+
+  return values.reduce((accumulator: any, currVal: any) => {
+    const isObject = typeof currVal === 'object' && !Array.isArray(currVal);
+    const currentArray = isObject ? deepAttributes(currVal, type) : [currVal];
+
+    return [...accumulator, ...currentArray];
+  }, []);
+};
+
 export const deepSortKeys = (obj: KeyedObject): object => {
   if (typeof obj !== 'undefined' && obj) {
     const orederedKeys = Object.keys(obj).sort();
@@ -22,18 +37,13 @@ export const deepSortKeys = (obj: KeyedObject): object => {
   return obj;
 };
 
-export const deepValues = (obj: object): any[] => {
-  const values = Object.values(obj);
-
-  return values.reduce((accumulator: any, currVal: any) => {
-    const isObject = typeof currVal === 'object' && !Array.isArray(currVal);
-    const currentArray = isObject ? deepValues(currVal) : [currVal];
-
-    return [...accumulator, ...currentArray];
-  }, []);
+export const deepValues = (obj: object): string[] => {
+  return deepAttributes(obj, 'values');
 };
 
-// export const deepKeys = (obj: object): any[] => {};
+export const deepKeys = (obj: object): string[] => {
+  return deepAttributes(obj, 'keys');
+};
 
 export const containsValue = (obj: object, value: Primitive): boolean => {
   return deepValues(obj).some(element => element === value);
@@ -94,6 +104,7 @@ export const deepMerge = (options: Options): object => {
 export default {
   deepSortKeys,
   deepValues,
+  deepKeys,
   containsValue,
   objectDiff,
   deepMerge

@@ -927,8 +927,14 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-function">
 			<a href="globals.html#containsvalue" class="tsd-kind-icon">contains<wbr>Value</a>
 		</li>
-		<li class=" tsd-kind-function">
+		<li class=" tsd-kind-function tsd-is-not-exported">
 			<a href="globals.html#containsvaluecurrying" class="tsd-kind-icon">contains<wbr>Value<wbr>Currying</a>
+		</li>
+		<li class=" tsd-kind-function tsd-is-not-exported">
+			<a href="globals.html#deepattributes" class="tsd-kind-icon">deep<wbr>Attributes</a>
+		</li>
+		<li class=" tsd-kind-function">
+			<a href="globals.html#deepkeys" class="tsd-kind-icon">deep<wbr>Keys</a>
 		</li>
 		<li class=" tsd-kind-function">
 			<a href="globals.html#deepmerge" class="tsd-kind-icon">deep<wbr>Merge</a>
@@ -937,7 +943,10 @@ img { max-width: 100%; }
 			<a href="globals.html#deepmergetwoobjects" class="tsd-kind-icon">deep<wbr>Merge<wbr>Two<wbr>Objects</a>
 		</li>
 		<li class=" tsd-kind-function">
-			<a href="globals.html#flatvalues" class="tsd-kind-icon">flat<wbr>Values</a>
+			<a href="globals.html#deepsortkeys" class="tsd-kind-icon">deep<wbr>Sort<wbr>Keys</a>
+		</li>
+		<li class=" tsd-kind-function">
+			<a href="globals.html#deepvalues" class="tsd-kind-icon">deep<wbr>Values</a>
 		</li>
 		<li class=" tsd-kind-function tsd-is-not-exported">
 			<a href="globals.html#hasdiff" class="tsd-kind-icon">has<wbr>Diff</a>
@@ -962,9 +971,6 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-function tsd-is-not-exported">
 			<a href="globals.html#parsearraystoindexobjects" class="tsd-kind-icon">parse<wbr>Arrays<wbr>ToIndex<wbr>Objects</a>
-		</li>
-		<li class=" tsd-kind-function">
-			<a href="globals.html#sortobjkeys" class="tsd-kind-icon">sort<wbr>Obj<wbr>Keys</a>
 		</li>
 		<li class=" tsd-kind-function">
 			<a href="globals.html#unique" class="tsd-kind-icon">unique</a>
@@ -1004,10 +1010,13 @@ img { max-width: 100%; }
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-function"><a href="globals.html#containsonlyprimitives" class="tsd-kind-icon">contains<wbr>Only<wbr>Primitives</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#containsvalue" class="tsd-kind-icon">contains<wbr>Value</a></li>
-							<li class="tsd-kind-function"><a href="globals.html#containsvaluecurrying" class="tsd-kind-icon">contains<wbr>Value<wbr>Currying</a></li>
+							<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#containsvaluecurrying" class="tsd-kind-icon">contains<wbr>Value<wbr>Currying</a></li>
+							<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#deepattributes" class="tsd-kind-icon">deep<wbr>Attributes</a></li>
+							<li class="tsd-kind-function"><a href="globals.html#deepkeys" class="tsd-kind-icon">deep<wbr>Keys</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#deepmerge" class="tsd-kind-icon">deep<wbr>Merge</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#deepmergetwoobjects" class="tsd-kind-icon">deep<wbr>Merge<wbr>Two<wbr>Objects</a></li>
-							<li class="tsd-kind-function"><a href="globals.html#flatvalues" class="tsd-kind-icon">flat<wbr>Values</a></li>
+							<li class="tsd-kind-function"><a href="globals.html#deepsortkeys" class="tsd-kind-icon">deep<wbr>Sort<wbr>Keys</a></li>
+							<li class="tsd-kind-function"><a href="globals.html#deepvalues" class="tsd-kind-icon">deep<wbr>Values</a></li>
 							<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#hasdiff" class="tsd-kind-icon">has<wbr>Diff</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#isbotharray" class="tsd-kind-icon">is<wbr>Both<wbr>Array</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#isbothobject" class="tsd-kind-icon">is<wbr>Both<wbr>Object</a></li>
@@ -1016,7 +1025,6 @@ img { max-width: 100%; }
 							<li class="tsd-kind-function"><a href="globals.html#normalize" class="tsd-kind-icon">normalize</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#objectdiff" class="tsd-kind-icon">object<wbr>Diff</a></li>
 							<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#parsearraystoindexobjects" class="tsd-kind-icon">parse<wbr>Arrays<wbr>ToIndex<wbr>Objects</a></li>
-							<li class="tsd-kind-function"><a href="globals.html#sortobjkeys" class="tsd-kind-icon">sort<wbr>Obj<wbr>Keys</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#unique" class="tsd-kind-icon">unique</a></li>
 						</ul>
 					</section>
@@ -1037,7 +1045,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Keyed<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/types.ts#L8">types.ts:8</a></li>
+						<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/types.ts#L8">types.ts:8</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1047,7 +1055,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/types.ts#L1">types.ts:1</a></li>
+						<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/types.ts#L1">types.ts:1</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -1074,7 +1082,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Primitive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/types.ts#L12">types.ts:12</a></li>
+						<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/types.ts#L12">types.ts:12</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1091,7 +1099,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/utils.ts#L3">utils.ts:3</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/utils.ts#L3">utils.ts:3</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1114,7 +1122,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/deep-operations.ts#L27">deep-operations.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L48">deep-operations.ts:48</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1130,17 +1138,17 @@ img { max-width: 100%; }
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-function">
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
 				<a name="containsvaluecurrying" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> contains<wbr>Value<wbr>Currying</h3>
-				<ul class="tsd-signatures tsd-kind-function">
+				<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
 					<li class="tsd-signature tsd-kind-icon">contains<wbr>Value<wbr>Currying<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/deep-operations.ts#L31">deep-operations.ts:31</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L5">deep-operations.ts:5</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1150,6 +1158,55 @@ img { max-width: 100%; }
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+				<a name="deepattributes" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> deep<wbr>Attributes</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">deep<wbr>Attributes<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L15">deep-operations.ts:15</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>obj: <span class="tsd-signature-type">object</span></h5>
+							</li>
+							<li>
+								<h5>type: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function">
+				<a name="deepkeys" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> deep<wbr>Keys</h3>
+				<ul class="tsd-signatures tsd-kind-function">
+					<li class="tsd-signature tsd-kind-icon">deep<wbr>Keys<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L44">deep-operations.ts:44</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>obj: <span class="tsd-signature-type">object</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1163,7 +1220,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/deep-operations.ts#L79">deep-operations.ts:79</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L91">deep-operations.ts:91</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1197,7 +1254,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/internals/merge.ts#L23">internals/merge.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/internals/merge.ts#L23">internals/merge.ts:23</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1219,25 +1276,48 @@ img { max-width: 100%; }
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-function">
-				<a name="flatvalues" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagConst">Const</span> flat<wbr>Values</h3>
+				<a name="deepsortkeys" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> deep<wbr>Sort<wbr>Keys</h3>
 				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">flat<wbr>Values<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+					<li class="tsd-signature tsd-kind-icon">deep<wbr>Sort<wbr>Keys<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><a href="globals.html#keyedobject" class="tsd-signature-type">KeyedObject</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/deep-operations.ts#L15">deep-operations.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L30">deep-operations.ts:30</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>obj: <span class="tsd-signature-type">any</span></h5>
+								<h5>obj: <a href="globals.html#keyedobject" class="tsd-signature-type">KeyedObject</a></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function">
+				<a name="deepvalues" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> deep<wbr>Values</h3>
+				<ul class="tsd-signatures tsd-kind-function">
+					<li class="tsd-signature tsd-kind-icon">deep<wbr>Values<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L40">deep-operations.ts:40</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>obj: <span class="tsd-signature-type">object</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1251,7 +1331,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/deep-operations.ts#L36">deep-operations.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L10">deep-operations.ts:10</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1274,7 +1354,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/utils.ts#L18">utils.ts:18</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/utils.ts#L18">utils.ts:18</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1303,7 +1383,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/utils.ts#L15">utils.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/utils.ts#L15">utils.ts:15</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1332,7 +1412,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/utils.ts#L1">utils.ts:1</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/utils.ts#L1">utils.ts:1</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1355,7 +1435,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/internals/merge.ts#L55">internals/merge.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/internals/merge.ts#L55">internals/merge.ts:55</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1384,7 +1464,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/utils.ts#L21">utils.ts:21</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/utils.ts#L21">utils.ts:21</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1410,7 +1490,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/deep-operations.ts#L44">deep-operations.ts:44</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/deep-operations.ts#L55">deep-operations.ts:55</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1449,7 +1529,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/internals/merge.ts#L11">internals/merge.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/internals/merge.ts#L11">internals/merge.ts:11</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1469,29 +1549,6 @@ img { max-width: 100%; }
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-function">
-				<a name="sortobjkeys" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagConst">Const</span> sort<wbr>Obj<wbr>Keys</h3>
-				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">sort<wbr>Obj<wbr>Keys<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><a href="globals.html#keyedobject" class="tsd-signature-type">KeyedObject</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/deep-operations.ts#L5">deep-operations.ts:5</a></li>
-							</ul>
-						</aside>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>obj: <a href="globals.html#keyedobject" class="tsd-signature-type">KeyedObject</a></h5>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-function">
 				<a name="unique" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> unique</h3>
 				<ul class="tsd-signatures tsd-kind-function">
@@ -1501,7 +1558,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/utils.ts#L8">utils.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/utils.ts#L8">utils.ts:8</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1523,7 +1580,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">merge<wbr>Objects<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/internals/merge.ts#L15">internals/merge.ts:15</a></li>
+						<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/internals/merge.ts#L15">internals/merge.ts:15</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
@@ -1532,7 +1589,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">index<wbr>Key<wbr>OnArrays<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/internals/merge.ts#L17">internals/merge.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/internals/merge.ts#L17">internals/merge.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1542,7 +1599,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">merge<wbr>Object<wbr>Into<wbr>Arrays<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/6c551d1/src/internals/merge.ts#L16">internals/merge.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/gabrielSeixas/deep-operations/blob/9ee1ab8/src/internals/merge.ts#L16">internals/merge.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>

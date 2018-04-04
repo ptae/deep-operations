@@ -1,6 +1,6 @@
 {
   "name": "deep-operations",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A lib to work with deep object operations",
   "keywords": [],
   "main": "dist/deep-operations.umd.js",
