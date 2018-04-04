@@ -102,7 +102,7 @@ describe('Test deepMerge', () => {
       name: 'Raquel',
       lastname: 'Seixas',
       address: {
-        streetName: 'Creep street',
+        streetName: 'Creepy street',
         number: '355',
         example: { name: 'name2', example: 'exampleKey' }
       },
@@ -146,7 +146,7 @@ describe('Test deepMerge', () => {
       name: 'Raquel',
       lastname: 'Seixas',
       address: {
-        streetName: 'Creep street',
+        streetName: 'Creepy street',
         number: '355',
         example: { name: 'name2', example: 'exampleKey' }
       },
@@ -172,6 +172,6 @@ describe('Test deepMerge', () => {
   });
 });
 
-describe('Test objectHasValue', () => {
+describe('Test containsValue', () => {
   it('should verify if contains value');
 });

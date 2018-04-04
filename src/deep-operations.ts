@@ -2,7 +2,17 @@ import { isBothArray, isBothObject, isPrimitive, unique } from './utils';
 import { deepMergeTwoObjects } from './internals/merge';
 import { Options, KeyedObject, ObjectState, Primitive } from './types';
 
-export const sortObjKeys = (obj: KeyedObject): object => {
+const containsValueCurrying = (obj: object) => {
+  const flattedObject = deepValues(obj);
+  return (value: Primitive) => flattedObject.some(element => element === value);
+};
+
+const hasDiff = (diffObject: object): boolean => {
+  const diffObjectHas = containsValueCurrying(diffObject);
+  return diffObjectHas(ObjectState.CHANGED) || diffObjectHas(ObjectState.NEW_KEY);
+};
+
+export const deepSortKeys = (obj: KeyedObject): object => {
   if (typeof obj !== 'undefined' && obj) {
     const orederedKeys = Object.keys(obj).sort();
     return orederedKeys.reduce((accumulator: object, currVal: string) => {
@@ -12,30 +22,21 @@ export const sortObjKeys = (obj: KeyedObject): object => {
   return obj;
 };
 
-export const flatValues = (obj: any): any[] => {
-  const alreadyArray = Array.isArray(obj);
-  const values = alreadyArray ? obj : Object.values(obj);
+export const deepValues = (obj: object): any[] => {
+  const values = Object.values(obj);
 
   return values.reduce((accumulator: any, currVal: any) => {
     const isObject = typeof currVal === 'object' && !Array.isArray(currVal);
-    const currentArray = isObject ? flatValues(currVal) : [currVal];
+    const currentArray = isObject ? deepValues(currVal) : [currVal];
 
     return [...accumulator, ...currentArray];
   }, []);
 };
 
+// export const deepKeys = (obj: object): any[] => {};
+
 export const containsValue = (obj: object, value: Primitive): boolean => {
-  return flatValues(obj).some(element => element === value);
-};
-
-export const containsValueCurrying = (obj: object) => {
-  const flattedObject = flatValues(obj);
-  return (value: Primitive) => flattedObject.some(element => element === value);
-};
-
-const hasDiff = (diffObject: object): boolean => {
-  const diffObjectHas = containsValueCurrying(diffObject);
-  return diffObjectHas(ObjectState.CHANGED) || diffObjectHas(ObjectState.NEW_KEY);
+  return deepValues(obj).some(element => element === value);
 };
 
 /**
@@ -50,7 +51,8 @@ export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): 
 
     const isChanged =
       hasKey &&
-      JSON.stringify(sortObjKeys(objOne[currVal])) !== JSON.stringify(sortObjKeys(objTwo[currVal]));
+      JSON.stringify(deepSortKeys(objOne[currVal])) !==
+        JSON.stringify(deepSortKeys(objTwo[currVal]));
 
     const diffValue = isChanged ? ObjectState.CHANGED : ObjectState.NOT_CHANGED;
     const defineIfIsNew = hasKey ? diffValue : ObjectState.NEW_KEY;
@@ -90,9 +92,9 @@ export const deepMerge = (options: Options): object => {
 };
 
 export default {
-  objectDiff,
+  deepSortKeys,
+  deepValues,
   containsValue,
-  deepMerge,
-  flatValues,
-  sortObjKeys
+  objectDiff,
+  deepMerge
 };
