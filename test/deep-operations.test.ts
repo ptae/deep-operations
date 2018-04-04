@@ -23,7 +23,7 @@ const objectExampleTwo = {
   name: 'Raquel',
   lastname: 'Seixas',
   address: {
-    streetName: 'Creep street',
+    streetName: 'Creepy street',
     number: '355',
     example: {
       name: 'name2',
