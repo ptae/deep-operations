@@ -9,6 +9,8 @@ export type KeyedObject = object & {
   [key: string]: any;
 };
 
+export type Primitive = string | number | boolean;
+
 export enum ObjectState {
   CHANGED = 'changed',
   NOT_CHANGED = 'not changed',

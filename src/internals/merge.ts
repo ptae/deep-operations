@@ -20,9 +20,7 @@ const mergeObjectsOptions: Options = {
 /**
  * It will merge only two objects
  */
-export const deepMergeTwoObjects = (
-  objOne: any,
-  objTwo: any,
+export const deepMergeTwoObjects = (objOne: any, objTwo: any) => (
   options: Options = mergeObjectsOptions
 ): object => {
   const { indexKeyOnArrays, mergeObjectIntoArrays } = options;
@@ -36,7 +34,7 @@ export const deepMergeTwoObjects = (
     const isObject = isBothObject(objOne, objTwo, currKey);
 
     const concatArrays = () => unique(objOne[currKey].concat(objTwo[currKey]));
-    const mergeObject = () => isObject && deepMergeTwoObjects(objOne[currKey], objTwo[currKey]);
+    const mergeObject = () => isObject && deepMergeTwoObjects(objOne[currKey], objTwo[currKey])();
 
     const concatOrMerge = () =>
       mergeObjectIntoArrays &&
@@ -57,7 +55,7 @@ export const deepMergeTwoObjects = (
 const mergeArrayObjects = (arrayOne: any[], arrayTwo: any[], indexKey: string) => {
   const [indexedOne, indexedTwo] = parseArraysToIndexObjects(arrayOne, arrayTwo, indexKey);
 
-  return deepMergeTwoObjects(indexedOne, indexedTwo, {
+  return deepMergeTwoObjects(indexedOne, indexedTwo)({
     indexKeyOnArrays: indexKey,
     mergeObjectIntoArrays: true
   });

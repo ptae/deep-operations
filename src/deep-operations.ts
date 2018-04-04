@@ -1,6 +1,6 @@
 import { isBothArray, isBothObject, isPrimitive, unique } from './utils';
 import { deepMergeTwoObjects } from './internals/merge';
-import { Options, KeyedObject, ObjectState } from './types';
+import { Options, KeyedObject, ObjectState, Primitive } from './types';
 
 export const sortObjKeys = (obj: KeyedObject): object => {
   if (typeof obj !== 'undefined' && obj) {
@@ -12,23 +12,30 @@ export const sortObjKeys = (obj: KeyedObject): object => {
   return obj;
 };
 
-export const flatValues = (obj: any) => {
+export const flatValues = (obj: any): any[] => {
   const alreadyArray = Array.isArray(obj);
   const values = alreadyArray ? obj : Object.values(obj);
 
   return values.reduce((accumulator: any, currVal: any) => {
     const isObject = typeof currVal === 'object' && !Array.isArray(currVal);
-    const turnToArray = isObject ? flatValues(currVal) : [currVal];
+    const currentArray = isObject ? flatValues(currVal) : [currVal];
 
-    return [...accumulator, ...turnToArray];
+    return [...accumulator, ...currentArray];
   }, []);
 };
 
+export const containsValue = (obj: object, value: Primitive): boolean => {
+  return flatValues(obj).some(element => element === value);
+};
+
+export const containsValueCurrying = (obj: object) => {
+  const flattedObject = flatValues(obj);
+  return (value: Primitive) => flattedObject.some(element => element === value);
+};
+
 const hasDiff = (diffObject: object): boolean => {
-  return (
-    flatValues(diffObject).includes(ObjectState.CHANGED) ||
-    flatValues(diffObject).includes(ObjectState.NEW_KEY)
-  );
+  const diffObjectHas = containsValueCurrying(diffObject);
+  return diffObjectHas(ObjectState.CHANGED) || diffObjectHas(ObjectState.NEW_KEY);
 };
 
 /**
@@ -77,13 +84,14 @@ export const deepMerge = (options: Options): object => {
   const firstObject = { ...options.objects[0] };
 
   return options.objects.reduce(
-    (accumulator: any, currVal: any) => deepMergeTwoObjects(accumulator, currVal, options),
+    (accumulator: any, currVal: any) => deepMergeTwoObjects(accumulator, currVal)(options),
     firstObject
   );
 };
 
 export default {
   objectDiff,
+  containsValue,
   deepMerge,
   flatValues,
   sortObjKeys

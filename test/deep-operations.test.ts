@@ -171,3 +171,7 @@ describe('Test deepMerge', () => {
     expect(result).toEqual(expectedValue);
   });
 });
+
+describe('Test objectHasValue', () => {
+  it('should verify if contains value');
+});
