@@ -1,4 +1,4 @@
-import { isBothArray, isBothObject, isPrimitive, unique } from './utils';
+import { isBothArray, isBothObject, isObject, isPrimitive, unique } from './utils';
 import { deepMergeTwoObjects } from './internals/merge';
 import { Options, KeyedObject, ObjectState, Primitive } from './types';
 
@@ -27,7 +27,7 @@ const deepAttributes = (obj: object, type: string): string[] => {
   }, []);
 };
 
-export const deepSortKeys = (obj: KeyedObject): object => {
+const sortKeys = (obj: KeyedObject): object => {
   if (typeof obj !== 'undefined' && obj) {
     const orederedKeys = Object.keys(obj).sort();
     return orederedKeys.reduce((accumulator: object, currVal: string) => {
@@ -35,6 +35,14 @@ export const deepSortKeys = (obj: KeyedObject): object => {
     }, {});
   }
   return obj;
+};
+
+export const deepSortKeys = (obj: KeyedObject): object => {
+  const orderedObject = sortKeys(obj);
+  return Object.entries(orderedObject).reduce((accumulator, [key, value]) => {
+    const newValue = isObject(value) ? deepSortKeys(value) : value;
+    return { ...accumulator, [key]: newValue };
+  }, {});
 };
 
 export const deepValues = (obj: object): string[] => {
@@ -61,12 +69,11 @@ export const objectDiff = (objOne: any, objTwo: any, { shallow = false } = {}): 
 
     const isChanged =
       hasKey &&
-      JSON.stringify(deepSortKeys(objOne[currVal])) !==
-        JSON.stringify(deepSortKeys(objTwo[currVal]));
+      JSON.stringify(sortKeys(objOne[currVal])) !== JSON.stringify(sortKeys(objTwo[currVal]));
 
     const diffValue = isChanged ? ObjectState.CHANGED : ObjectState.NOT_CHANGED;
     const defineIfIsNew = hasKey ? diffValue : ObjectState.NEW_KEY;
-    const isObject = isBothObject(objOne, objTwo, currVal);
+    const isObject = isBothObject(objOne[currVal], objTwo[currVal]);
 
     const recursiveStrategy = () =>
       isObject ? objectDiff(objOne[currVal], objTwo[currVal], { shallow })[0] : defineIfIsNew;
@@ -102,7 +109,7 @@ export const deepMerge = (options: Options): object => {
 };
 
 export default {
-  deepSortKeys,
+  sortKeys,
   deepValues,
   deepKeys,
   containsValue,
