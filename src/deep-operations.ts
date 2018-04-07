@@ -12,6 +12,9 @@ const hasDiff = (diffObject: object): boolean => {
   return diffObjectHas(ObjectState.CHANGED) || diffObjectHas(ObjectState.NEW_KEY);
 };
 
+/**
+ * Will deep flat object into one array based on an key (key|value)
+ */
 const deepAttributes = (obj: object, type: string): string[] => {
   if (type !== 'keys' && type !== 'values') {
     throw new Error('type param must be `keys` or `values`');
