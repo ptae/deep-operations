@@ -1,19 +1,19 @@
 # deep-operations
 
-A javascritp library to work with deep object modifications.
+A JavaScript library to work with deep object modifications.
 
 ## Why deep-operations?
 
-Sometimes doing deep objects modifications is quite difficult
+Sometimes doing deep object modifications is quite difficult
 and not so performatic. Deep Operations gives a collection
 of modular functions to work with operations like:
 
-* Deep objects merge
-* Deep arrays concatenation
-* Deep objects differentiation
+* Deep object merge
+* Deep array concatenation
+* Deep object differentiation
 * And many others
 
-A simple doc can be found [here](https://gsseixas.github.io/deep-operations/).
+Documentation can be found [here](https://gsseixas.github.io/deep-operations/).
 
 ## Installation
 
