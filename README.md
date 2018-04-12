@@ -28,3 +28,8 @@ Using yarn:
 ```
   yarn add deep-operations
 ```
+
+## Want to help?
+
+This project was built with [TypeScript library starter](https://github.com/alexjoverm/typescript-library-starter).
+More information later...
