@@ -14,4 +14,4 @@ with operations like:
 * Deep objects differentiation
 * And many others
 
-A simple doc with the functions can be found [here](https://gsseixas.github.io/deep-operations/)
+A simple doc with the functions can be found [here](https://gsseixas.github.io/deep-operations/).
