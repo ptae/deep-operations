@@ -1,8 +1,8 @@
-# deep-operations
+# Deep Operations
 
 A JavaScript library to work with deep object modifications.
 
-## Why deep-operations?
+## Why Deep Operations?
 
 Sometimes doing deep object modifications is quite difficult
 and not so performatic. Deep Operations gives a collection
