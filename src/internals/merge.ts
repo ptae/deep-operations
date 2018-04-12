@@ -5,8 +5,8 @@ import {
   unique,
   normalize,
   containsOnlyPrimitives
-} from './../utils';
-import { Options } from '../types';
+} from './utils';
+import { Options } from './types';
 
 const parseArraysToIndexObjects = (arrayOne: any[], arrayTwo: any[], indexKey: string): any[] => {
   return [normalize(arrayOne, indexKey), normalize(arrayTwo, indexKey)];

@@ -1,6 +1,6 @@
-import { isBothArray, isBothObject, isPrimitive, unique } from './utils';
+import { isBothArray, isBothObject, isPrimitive, unique } from './internals/utils';
 import { deepMergeTwoObjects } from './internals/merge';
-import { Options, KeyedObject, ObjectState, Primitive } from './types';
+import { Options, KeyedObject, ObjectState, Primitive } from './internals/types';
 
 const containsValueCurrying = (obj: object) => {
   const flattedObject = deepValues(obj);
