@@ -1,4 +1,4 @@
-# Deep Operations
+# Deep Operations :+1:
 
 A JavaScript library to work with deep object modifications.
 
